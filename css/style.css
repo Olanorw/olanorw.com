@@ -63,7 +63,7 @@ button {
 textarea {
   resize: none; }
 
-hr {
+hr.dark {
   height: 2px;
   background-color: #444;
   border: none;
