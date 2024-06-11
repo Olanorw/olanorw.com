@@ -40,6 +40,7 @@ body {
   font-family: sans-serif;
   overflow-x: hidden;
   overflow-y: scroll;
+  background-color: #000002;
   font-family: 'Source Sans Pro', sans-serif; }
 
 a {
@@ -61,6 +62,14 @@ button {
 
 textarea {
   resize: none; }
+
+hr {
+  height: 2px;
+  background-color: #444;
+  border: none;
+  width: 85%;
+  margin: 2rem auto;
+}
 
 .subtitled {
   background-color: #000002;
@@ -146,6 +155,7 @@ textarea {
 .main-container {
   max-width: 120rem;
   margin: auto;
+  background-color: #000002;
   width: 92%; }
 
 .btn {
@@ -233,9 +243,9 @@ textarea {
   .home-hero__socials {
     position: absolute;
     top: 50%;
-    right: 0;
+    left: 0;
     border: 2px solid #000;
-    border-right: 0px solid #000;
+    border-left: 0px solid #000;
     transform: translateY(-50%); }
     @media only screen and (max-width: 56.25em) {
       .home-hero__socials {
@@ -244,7 +254,6 @@ textarea {
     position: absolute;
     bottom: 3%;
     left: 50%;
-    filter: invert(1) grayscale(1) brightness(1);
     color: #000;
     transform: translateX(-50%); }
     @media only screen and (max-width: 37.5em) {
@@ -263,8 +272,7 @@ textarea {
     .home-hero__social-icon-link--bd-none {
       border-bottom: 0; }
   .home-hero__social-icon {
-    width: 100%;
-    filter: invert(1) grayscale(1) brightness(0); }
+    width: 100%;}
   .home-hero__content {
     position: absolute;
     top: 50%;
@@ -347,6 +355,7 @@ textarea {
     .projects__row-content-title {
       font-weight: 700;
       font-size: 2.8rem;
+      color: #fff;
       margin-bottom: 2rem; }
       @media only screen and (max-width: 37.5em) {
         .projects__row-content-title {
