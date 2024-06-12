@@ -1,338 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>olanorw</title>
-    <meta name="description" content="Portfolio Template for Developer" />
-    <link rel="icon" href="./assets/ico/favicon.ico" type="image/x-icon" />
-
-    <link rel="stylesheet" href="./web-style/styles.css" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
+    <meta name="description" content="Portfolio Template for Developer">
+    <link rel="icon" href="./assets/ico/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./web-style/main-styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
     <header class="header">
-      <div class="header__content" style="background-color: #000002;">
-        <div class="header__logo-container">
-          <div class="header__logo-img-cont">
-            <img
-              src="assets\png\Olanorw Main.png"
-              alt="Ram Maheshwari Logo Image"
-              class="header__logo-img"
-            />
-          </div>
-          <span class="header__logo-sub" style="color: #fff;">OLANORW</span>
+        <div class="header__content" style="background-color: #000002;">
+            <div class="header__logo-container">
+                <div class="header__logo-img-cont">
+                    <img src="assets/png/Olanorw Main.png" alt="Logo Image" class="header__logo-img">
+                </div>
+                <span class="header__logo-sub" style="color: #fff;">OLANORW</span>
+            </div>
+            <div class="header__main">
+                <ul class="header__links">
+                    <li class="header__link-wrapper"><a href="./index.html" class="header__link" style="color: #fff;">Home</a></li>
+                    <li class="header__link-wrapper"><a href="./index.html#about" class="header__link" style="color: #fff;">About</a></li>
+                    <li class="header__link-wrapper"><a href="./index.html#projects" class="header__link" style="color: #fff;">Projects</a></li>
+                    <li class="header__link-wrapper"><a href="./index.html#contact" class="header__link" style="color: #fff;">Contact</a></li>
+                </ul>
+                <div class="header__main-ham-menu-cont">
+                    <img src="./assets/svg/ham-menu.svg" alt="hamburger menu" class="header__main-ham-menu">
+                    <img src="./assets/svg/ham-menu-close.svg" alt="hamburger menu close" class="header__main-ham-menu-close d-none">
+                </div>
+            </div>
         </div>
-        <div class="header__main">
-          <ul class="header__links">
-            <li class="header__link-wrapper">
-              <a href="./index.html" class="header__link" style="color: #fff;"> Home </a>
-            </li>
-            <li class="header__link-wrapper">
-              <a href="./index.html#about" class="header__link" style="color: #fff;">About </a>
-            </li>
-            <li class="header__link-wrapper">
-              <a href="./index.html#projects" class="header__link" style="color: #fff;">
-                Projects
-              </a>
-            </li>
-            <li class="header__link-wrapper">
-              <a href="./index.html#contact" class="header__link" style="color: #fff;"> Contact </a>
-            </li>
-          </ul>
-          <div class="header__main-ham-menu-cont">
-            <img
-              src="./assets/svg/ham-menu.svg"
-              alt="hamburger menu"
-              class="header__main-ham-menu"
-            />
-            <img
-              src="./assets/svg/ham-menu-close.svg"
-              alt="hamburger menu close"
-              class="header__main-ham-menu-close d-none"
-            />
-          </div>
+        <div class="header__sm-menu">
+            <div class="header__sm-menu-content">
+                <ul class="header__sm-menu-links">
+                    <li class="header__sm-menu-link"><a href="./index.html">Home</a></li>
+                    <li class="header__sm-menu-link"><a href="./index.html#about">About</a></li>
+                    <li class="header__sm-menu-link"><a href="./index.html#projects">Projects</a></li>
+                    <li class="header__sm-menu-link"><a href="./index.html#contact">Contact</a></li>
+                </ul>
+            </div>
         </div>
-      </div>
-      <div class="header__sm-menu">
-        <div class="header__sm-menu-content">
-          <ul class="header__sm-menu-links">
-            <li class="header__sm-menu-link">
-              <a href="./index.html"> Home </a>
-            </li>
-
-            <li class="header__sm-menu-link">
-              <a href="./index.html#about"> About </a>
-            </li>
-
-            <li class="header__sm-menu-link">
-              <a href="./index.html#projects"> Projects </a>
-            </li>
-
-            <li class="header__sm-menu-link">
-              <a href="./index.html#contact"> Contact </a>
-            </li>
-          </ul>
-        </div>
-      </div>
     </header>
-    <section class="home-hero">
-      <div class="home-hero__content" id="landpage">
-        <script src="landing_page_text.js"></script>
-        <!--
-        <div class="home-hero__info">
-          <p class="subtitled">
-            I'm a Full Stack Solo developer dealing a lot with game development primarily using C# and the Unity Game Engine. Call me Olan, Olav, Olanorw, whatever works.
-          </p>
+    <section class="home-hero animate-on-scroll hidden">
+        <div class="home-hero__content" id="landpage">
+            <script src="landing_page_text.js"></script>
+            <!-- Additional content can go here -->
         </div>
-        -->
-        <!--
-        <div class="home-hero__cta">
-          <a href="./#projects" class="btn btn--bg">Projects</a>
+        <div class="home-hero__socials">
+            <div class="home-hero__social"></div>
+            <div class="home-hero__social">
+                <a href="https://github.com/olanorw" class="home-hero__social-icon-link">
+                    <img src="./assets/png/github-ico.png" alt="icon" class="home-hero__social-icon">
+                </a>
+            </div>
+            <div class="home-hero__social">
+                <a href="https://x.com/olanorw" class="home-hero__social-icon-link">
+                    <img src="./assets/png/twitter-ico.png" alt="icon" class="home-hero__social-icon">
+                </a>
+            </div>
+            <div class="home-hero__social">
+                <a href="#" class="home-hero__social-icon-link">
+                    <img src="./assets/png/yt-ico.png" alt="icon" class="home-hero__social-icon">
+                </a>
+            </div>
+            <div class="home-hero__social">
+                <a href="https://www.instagram.com/olanorw" class="home-hero__social-icon-link home-hero__social-icon-link--bd-none">
+                    <img src="./assets/png/insta-ico.png" alt="icon" class="home-hero__social-icon">
+                </a>
+            </div>
         </div>
-        -->
-      </div>
-      <div class="home-hero__socials">
-        <div class="home-hero__social">
+        <div class="home-hero__mouse-scroll-cont">
+            <div class="mouse"></div>
         </div>
-        <div class="home-hero__social">
-          <a href="https://github.com/olanorw" class="home-hero__social-icon-link">
-            <img
-              src="./assets/png/github-ico.png"
-              alt="icon"
-              class="home-hero__social-icon"
-            />
-          </a>
-        </div>
-        <div class="home-hero__social">
-          <a href="https://x.com/olanorw" class="home-hero__social-icon-link">
-            <img
-              src="./assets/png/twitter-ico.png"
-              alt="icon"
-              class="home-hero__social-icon"
-            />
-          </a>
-        </div>
-        <div class="home-hero__social">
-          <a href="#" class="home-hero__social-icon-link">
-            <img
-              src="./assets/png/yt-ico.png"
-              alt="icon"
-              class="home-hero__social-icon"
-            />
-          </a>
-        </div>
-        <div class="home-hero__social">
-          <a
-            href="https://www.instagram.com/olanorw"
-            class="home-hero__social-icon-link home-hero__social-icon-link--bd-none"
-          >
-            <img
-              src="./assets/png/insta-ico.png"
-              alt="icon"
-              class="home-hero__social-icon"
-            />
-          </a>
-        </div>
-      </div>
-      <div class="home-hero__mouse-scroll-cont">
-        <div class="mouse"></div>
-      </div>
     </section>
-    <section id="about" class="about sec-pad">
-      <div class="main-container">
-        <h2 class="heading heading-sec heading-sec__mb-med">
-          <span class="heading-sec__main" style="color: #fff;">About Me</span>
-          <span class="heading-sec__sub">
-            I am a software developer, I inkneedle.com, love the open source community.
-          </span>
-        </h2>
-        <div class="about__content">
-          <div class="about__content-main">
-            <h3 class="about__content-title">Get to know me!</h3>
-            <div class="about__content-details">
-              <p class="about__content-details-para">
-                Hi, I'm <strong>Olav</strong>, better known as <strong>Olanorw</strong> online. I'm a full stack software developer who loves game development, hardware, and entrepreneurship.
-              </p>
-              <p class="about__content-details-para">
-                I do lots of hobbyist projects which you can find on my github. These projects vary a lot and are free to use. I also specialize in CAD and 3D Printing.
-              </p>
+    <section id="about" class="about sec-pad animate-on-scroll hidden">
+        <div class="main-container">
+            <h2 class="heading heading-sec heading-sec__mb-med">
+                <span class="heading-sec__main" style="color: #fff;">About Me</span>
+                <span class="heading-sec__sub">
+                    I am a software developer, I inkneedle.com, love the open source community.
+                </span>
+            </h2>
+            <div class="about__content">
+                <div class="about__content-main">
+                    <h3 class="about__content-title">Get to know me!</h3>
+                    <div class="about__content-details">
+                        <p class="about__content-details-para">
+                            Hi, I'm <strong>Olav</strong>, better known as <strong>Olanorw</strong> online. I'm a full stack software developer who loves game development, hardware, and entrepreneurship.
+                        </p>
+                        <p class="about__content-details-para">
+                            I do lots of hobbyist projects which you can find on my github. These projects vary a lot and are free to use. I also specialize in CAD and 3D Printing.
+                        </p>
+                    </div>
+                </div>
+                <div class="about__content-skills">
+                    <h3 class="about__content-title">My Skills</h3>
+                    <div class="skills">
+                        <div class="skills__skill">C#</div>
+                        <div class="skills__skill">Java</div>
+                        <div class="skills__skill">C</div>
+                        <div class="skills__skill">Unity</div>
+                        <div class="skills__skill">Python</div>
+                        <div class="skills__skill">HTML</div>
+                        <div class="skills__skill">CSS</div>
+                        <div class="skills__skill">JavaScript</div>
+                        <div class="skills__skill">React</div>
+                        <div class="skills__skill">Shopify</div>
+                        <div class="skills__skill">Android</div>
+                        <div class="skills__skill">Node.js</div>
+                        <div class="skills__skill">GIT</div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="about__content-skills">
-            <h3 class="about__content-title">My Skills</h3>
-            <div class="skills">
-              <div class="skills__skill">C#</div>
-              <div class="skills__skill">Java</div>
-              <div class="skills__skill">C</div>
-              <div class="skills__skill">Unity</div>
-              <div class="skills__skill">Python</div>
-              <div class="skills__skill">HTML</div>
-              <div class="skills__skill">CSS</div>
-              <div class="skills__skill">JavaScript</div>
-              <div class="skills__skill">React</div>
-              <div class="skills__skill">Shopify</div>
-              <div class="skills__skill">Android</div>
-              <div class="skills__skill">Node.js</div>
-              <div class="skills__skill">GIT</div>
-            </div>
-          </div>
         </div>
-      </div>
     </section>
     <hr class="dark">
-    <section id="projects" class="projects sec-pad" style="background-color: #000002;">
-      <div class="main-container">
-        <h2 class="heading heading-sec heading-sec__mb-bg">
-          <span class="heading-sec__main" style="color: #fff;">Projects</span>
-          <span class="heading-sec__sub">
-            Here are some of of the projects I've been working on.
-          </span>
-        </h2>
-<!--test-->
-        <div class="projects__content">
-          <div class="projects__row">
-            <div class="projects__row-img-cont">
-              <img
-                src="https://www.inkneedle.store/cdn/shop/files/InkNeedle_Full_0bec56fa-9a63-4276-b6e4-f844eaa121fa.svg?v=1715546801&width=200"
-                alt="Software Screenshot"
-                class="projects__row-img"
-                loading="lazy"
-              />
+    <section id="projects" class="projects sec-pad animate-on-scroll hidden" style="background-color: #000002;">
+        <div class="main-container">
+            <h2 class="heading heading-sec heading-sec__mb-bg">
+                <span class="heading-sec__main" style="color: #fff;">Projects</span>
+                <span class="heading-sec__sub">
+                    Here are some of of the projects I've been working on.
+                </span>
+            </h2>
+            <div class="projects__content">
+                <div class="projects__row">
+                    <div class="projects__row-img-cont">
+                        <img src="https://www.inkneedle.store/cdn/shop/files/InkNeedle_Full_0bec56fa-9a63-4276-b6e4-f844eaa121fa.svg?v=1715546801&width=200" alt="Software Screenshot" class="projects__row-img" loading="lazy">
+                    </div>
+                    <div class="projects__row-content">
+                        <h3 class="projects__row-content-title" style="color: #fff;">InkNeedle</h3>
+                        <p class="projects__row-content-desc">
+                            I founded InkNeedle back in January of 2023 to give customers choice for apparel. InkNeedle offers a design tool to let customers make their own clothes, or they can choose from staffs' hundreds to thousands of designs. InkNeedle also sells accessories such as jewelry and watches.
+                        </p>
+                        <a href="https://inkneedle.store" class="btn btn--med btn--theme dynamicBgClr" target="_blank" style="background-color: rgba(153, 153, 153, 0.2);">Browse InkNeedle</a>
+                    </div>
+                </div>
             </div>
-            <div class="projects__row-content">
-              <h3 class="projects__row-content-title" style="color: #fff;">InkNeedle</h3>
-              <p class="projects__row-content-desc">
-                I founded InkNeedle back in January of 2023 to give customers choice for apparel. InkNeedle offers a design tool to let customers make their own clothes, or they can choose from staffs' hundreds to thousands of designs. InkNeedle also sells accessories such as jewelry and watches.
-              </p>
-              <a
-                href="https://inkneedle.store"
-                class="btn btn--med btn--theme dynamicBgClr"
-                target="_blank" style="background-color: rgba(153, 153, 153, 0.2);"
-                >Browse InkNeedle</a
-              >
-            </div>
-          </div>
-            </div>
-          </div>
         </div>
-      </div>
     </section>
-    <section id="contact" class="contact sec-pad dynamicBg">
-      <div class="main-container-contact">
-        <h2 class="heading heading-sec heading-sec__mb-med">
-          <span class="heading-sec__main heading-sec__main--lt">Contact</span>
-          <span class="heading-sec__sub heading-sec__sub--lt">
-        </h2> 
-        <div class="contact__form-container">
-          <form action="#" class="contact__form" style="margin-top: -15%;">
-            <div class="contact__form-field">
-              <label class="contact__form-label" for="name">Name</label>
-              <input
-                required
-                placeholder="Enter Your Name"
-                type="text"
-                class="contact__form-input"
-                name="name"
-                id="name"
-              />
+    <section id="contact" class="contact sec-pad dynamicBg animate-on-scroll hidden">
+        <div class="main-container-contact">
+            <h2 class="heading heading-sec heading-sec__mb-med">
+                <span class="heading-sec__main heading-sec__main--lt">Contact</span>
+                <span class="heading-sec__sub heading-sec__sub--lt">
+            </h2> 
+            <div class="contact__form-container">
+                <form action="#" class="contact__form" style="margin-top: -15%;">
+                    <div class="contact__form-field">
+                        <label class="contact__form-label" for="name">Name</label>
+                        <input required placeholder="Enter Your Name" type="text" class="contact__form-input" name="name" id="name">
+                    </div>
+                    <div class="contact__form-field">
+                        <label class="contact__form-label" for="email">Email</label>
+                        <input required placeholder="Enter Your Email" type="text" class="contact__form-input" name="email" id="email">
+                    </div>
+                    <div class="contact__form-field">
+                        <label class="contact__form-label" for="message">Message</label>
+                        <textarea required cols="30" rows="10" class="contact__form-input" placeholder="Enter Your Message" name="message" id="message"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn--theme contact__btn" style="background-color: rgba(153, 153, 153, 0.2);">Submit</button>
+                </form>
             </div>
-            <div class="contact__form-field">
-              <label class="contact__form-label" for="email">Email</label>
-              <input
-                required
-                placeholder="Enter Your Email"
-                type="text"
-                class="contact__form-input"
-                name="email"
-                id="email"
-              />
-            </div>
-            <div class="contact__form-field">
-              <label class="contact__form-label" for="message">Message</label>
-              <textarea
-                required
-                cols="30"
-                rows="10"
-                class="contact__form-input"
-                placeholder="Enter Your Message"
-                name="message"
-                id="message"
-              ></textarea>
-            </div>
-            <button type="submit" class="btn btn--theme contact__btn" style="background-color: rgba(153, 153, 153, 0.2);">
-              Submit
-            </button>
-          </form>
         </div>
-      </div>
     </section>
     <footer class="main-footer">
-      <div class="main-container">
-        <div class="main-footer__upper">
-          <div class="main-footer__row main-footer__row-1">
-            <h2 class="heading heading-sm main-footer__heading-sm">
-              <span>Social</span>
-            </h2>
-            <div class="main-footer__social-cont">
-              <a target="_blank" rel="noreferrer" href="#">
-                <img
-                  class="main-footer__icon"
-                  src="./assets/png/linkedin-ico.png"
-                  alt="icon"
-                />
-              </a>
-              <a target="_blank" rel="noreferrer" href="#">
-                <img
-                  class="main-footer__icon"
-                  src="./assets/png/github-ico.png"
-                  alt="icon"
-                />
-              </a>
-              <a target="_blank" rel="noreferrer" href="#">
-                <img
-                  class="main-footer__icon"
-                  src="./assets/png/twitter-ico.png"
-                  alt="icon"
-                />
-              </a>
-              <a target="_blank" rel="noreferrer" href="#">
-                <img
-                  class="main-footer__icon"
-                  src="./assets/png/yt-ico.png"
-                  alt="icon"
-                />
-              </a>
-              <a target="_blank" rel="noreferrer" href="#">
-                <img
-                  class="main-footer__icon main-footer__icon--mr-none"
-                  src="./assets/png/insta-ico.png"
-                  alt="icon"
-                />
-              </a>
+        <div class="main-container">
+            <div class="main-footer__upper">
+                <div class="main-footer__row main-footer__row-1">
+                    <h2 class="heading heading-sm main-footer__heading-sm"><span>Social</span></h2>
+                    <div class="main-footer__social-cont">
+                        <a target="_blank" rel="noreferrer" href="#"><img class="main-footer__icon" src="./assets/png/linkedin-ico.png" alt="icon"></a>
+                        <a target="_blank" rel="noreferrer" href="#"><img class="main-footer__icon" src="./assets/png/github-ico.png" alt="icon"></a>
+                        <a target="_blank" rel="noreferrer" href="#"><img class="main-footer__icon" src="./assets/png/twitter-ico.png" alt="icon"></a>
+                        <a target="_blank" rel="noreferrer" href="#"><img class="main-footer__icon" src="./assets/png/yt-ico.png" alt="icon"></a>
+                        <a target="_blank" rel="noreferrer" href="#"><img class="main-footer__icon main-footer__icon--mr-none" src="./assets/png/insta-ico.png" alt="icon"></a>
+                    </div>
+                </div>
+                <div class="main-footer__row main-footer__row-2">
+                    <h4 class="heading heading-sm text-lt">OLANORW</h4>
+                    <p class="main-footer__short-desc">Website Inspired by Ram Maheshwari</p>
+                    <p class="main-footer__short-desc">© Copyright 2024 Olanorw aka Olav S</p>
+                </div>
             </div>
-          </div>
-          <div class="main-footer__row main-footer__row-2">
-            <h4 class="heading heading-sm text-lt">OLANORW</h4>
-            <p class="main-footer__short-desc">
-              Website Inspired by Ram Maheshwari
-            </p>
-            <p class="main-footer__short-desc">© Copyright 2024 Olanorw aka Olav S</p>
-          </div>
         </div>
-
-        <!-- If you give me some credit or shoutout here by linking to my website, then it will be a big thing for me and will help me a lot :) -->
-        </div>
-      </div>
     </footer>
 
-    <script src="./index.js"></script>
-  </body>
+    <!-- Link to your JS file -->
+    <script src="skills.js"></script>
+    <script src="loading.js"></script>
+</body>
 </html>

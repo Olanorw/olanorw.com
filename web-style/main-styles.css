@@ -752,16 +752,38 @@ hr.dark {
 
 .skills {
   display: flex;
-  flex-wrap: wrap; }
-  .skills__skill {
-    padding: 1rem 2rem;
-    margin-bottom: 1.5rem;
-    margin-right: 1.5rem;
-    font-size: 1.6rem;
-    background: rgba(153, 153, 153, 0.2);
-    border-radius: 5px;
-    font-weight: 600;
-    color: #777; }
+  flex-wrap: wrap;
+}
+
+.hidden {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease-out, transform 1s ease-out;
+}
+
+.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+.skills__skill {
+  padding: 1rem 2rem;
+  margin-bottom: 1.5rem;
+  margin-right: 1.5rem;
+  font-size: 1.6rem;
+  background: rgba(153, 153, 153, 0.2);
+  border-radius: 5px;
+  font-weight: 600;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth transition */
+  color: #777;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.skills__skill:hover {
+  transform: translateY(-10px);
+}
 
 .mouse {
   width: 25px;
