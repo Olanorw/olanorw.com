@@ -243,8 +243,7 @@ hr.dark {
   .home-hero__socials {
     position: absolute;
     top: 50%;
-    left: 0;
-    border: 2px solid #000;
+    left: 1%;
     border-left: 0px solid #000;
     transform: translateY(-50%); }
     @media only screen and (max-width: 56.25em) {
@@ -265,14 +264,19 @@ hr.dark {
     width: 100%;
     display: block;
     padding: 1.2rem;
-    border-bottom: 2px solid #000;
+    padding-right: 10px;
     transition: background .3s; }
     .home-hero__social-icon-link:hover {
       background: rgba(255, 255, 255, 0.1); }
     .home-hero__social-icon-link--bd-none {
       border-bottom: 0; }
   .home-hero__social-icon {
-    width: 100%;}
+      background-color: #000;
+      border: 2px solid #000; /* Add a normal border if needed */
+      width: 100%;
+      box-shadow: 0 0 0 10px #000; /* Adjust the spread to achieve the desired effect */
+  }
+
   .home-hero__content {
     position: absolute;
     top: 50%;
