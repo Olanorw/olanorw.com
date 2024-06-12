@@ -71,6 +71,12 @@ hr.dark {
   margin: 2rem auto;
 }
 
+#terminal-text {
+  background-color: rgb(0, 0, 0); /* Adjust background color */
+  padding: 1rem 3rem; /* Adjust padding to fit the text */
+  margin: 0; /* Remove default margin */
+}
+
 .subtitled {
   background-color: #000002;
   color: #fff;
@@ -213,15 +219,39 @@ hr.dark {
   display: none; }
 
 .home-hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: #fff;
   background: url("https://raw.githubusercontent.com/olanorw/olanorw.com/main/assets/png/Olanorw%20Plain%20Art%20Sqaure.png"); /* Replace this with your image URL */
   background-position: center;
   background-size: cover;
-  background-repeat: no-repeat;
-  height: calc(100vh + 500px);
+
+  height: calc(100vh);
   min-height: 80rem;
   max-height: 120rem;
   position: relative;
+}
+
+.containerlandingpagetxt {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.blinking-underscore {
+  animation: blink 0.5s steps(1) infinite;
+  margin-right: 15rem;
+}
+
+#cursor {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0% {opacity: 1;}
+  50% {opacity: 0;}
+  100% {opacity: 1;}
 }
 
 /* Dark theme scrollbar */
@@ -285,6 +315,8 @@ hr.dark {
   }
 
   .home-hero__content {
+    display: flex;
+    justify-content: center;
     position: absolute;
     top: 50%;
     left: 50%;
