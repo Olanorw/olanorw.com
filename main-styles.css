@@ -250,15 +250,15 @@ hr.dark {
   .home-hero__socials {
     position: absolute;
     top: 50%;
-    left: 1%;
-    border-left: 0px solid #000;
+    left: 01%;
+    border-left: 1px solid #000;
     transform: translateY(-50%); }
     @media only screen and (max-width: 56.25em) {
       .home-hero__socials {
         display: none; } }
   .home-hero__mouse-scroll-cont {
     position: absolute;
-    bottom: 3%;
+    bottom: 2%;
     left: 50%;
     color: #000;
     transform: translateX(-50%); }
