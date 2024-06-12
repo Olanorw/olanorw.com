@@ -158,6 +158,13 @@ hr.dark {
   background-color: #000002;
   width: 92%; }
 
+.main-container-contact {
+  max-width: 80rem;
+  margin: auto;
+  padding-top: 50px;
+  background-color: #000002;
+  width: 92%; }
+
 .btn {
   background: #fff;
   color: #f7f7f7;
@@ -375,12 +382,12 @@ hr.dark {
           font-size: 1.7rem; } }
 
 .contact {
-  background: linear-gradient(to right, rgba(0, 98, 185, 0.8), rgba(0, 98, 185, 0.8)), url(../../assets/svg/common-bg.svg);
+  background: url("https://raw.githubusercontent.com/olanorw/olanorw.com/main/assets/png/Olanorw%20Plain%20Art%20Sqaure.png");
+  background-repeat: no-repeat;
   background-size: cover;
   background-position: center; }
   .contact__form-container {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background: white;
+    background: #000002;
     padding: 4rem;
     margin-top: 6rem;
     max-width: 80rem;
@@ -397,7 +404,7 @@ hr.dark {
       .contact__form-field {
         margin-bottom: 3rem; } }
   .contact__form-label {
-    color: #666;
+    color: #ffffff;
     font-size: 1.4rem;
     letter-spacing: 1px;
     font-weight: 700;
@@ -405,13 +412,13 @@ hr.dark {
     display: block;
     text-align: left; }
   .contact__form-input {
-    color: #333;
+    color: #ffffff;
     padding: 2rem;
     width: 100%;
-    border: 1px solid #ebebeb;
+    border: 1px solid #777;
     font-size: 1.6rem;
     letter-spacing: 0px;
-    background: #f0f0f0;
+    background: #000002;
     border-radius: 5px;
     font-weight: 600;
     /* Code for Modern Browsers */
