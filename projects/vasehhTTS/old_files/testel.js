@@ -3,7 +3,7 @@ const fs = require('fs');
 const options = {
   method: 'POST',
   headers: {
-    'xi-api-key': 'sk_c37662c4250f30db5ac5b155427f5ec3d43b0f20b8acee8b',
+    'xi-api-key': '',
     'Content-Type': 'application/json'
   },
   body: JSON.stringify({

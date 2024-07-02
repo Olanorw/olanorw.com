@@ -3,11 +3,11 @@ const https = require('https');
 const fs = require('fs');
 
 // Replace with your actual tokens and keys
-const twitchOAuthToken = 'tv5w1d7osoca97dk8nsx2y13e6chl8'; // Replace with your new OAuth token
-const twitchUsername = 'olanorw_';
-const twitchChannel = 'vasehh'; // Twitch channel name
-const elevenLabsAPIKey = 'sk_c37662c4250f30db5ac5b155427f5ec3d43b0f20b8acee8b';
-const elevenLabsVoiceID = 'srUyX1KiPXUS7jvGq3HY'; // Replace with your desired voice ID from ElevenLabs
+const twitchOAuthToken = ''; // Replace with your new OAuth token
+const twitchUsername = '';
+const twitchChannel = ''; // Twitch channel name
+const elevenLabsAPIKey = '';
+const elevenLabsVoiceID = ''; // Replace with your desired voice ID from ElevenLabs
 
 // Function to connect to Twitch IRC
 function connectTwitchIRC() {
