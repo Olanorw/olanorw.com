@@ -12,20 +12,8 @@
         }
     </style>
 </head>
-<body>
-    <audio id="myAudio" src="gay-echo.mp3" type="audio/mpeg"></audio>
-
-    <script>
-        function playAudio() {
-            var audio = document.getElementById('myAudio');
-            audio.play().then(() => {
-                console.log('Audio is playing');
-            }).catch(error => {
-                console.error('Error playing audio:', error);
-            });
-        }
-
-        setInterval(playAudio, 6000); // Play audio every 6 seconds
-    </script>
-</body>
+<audio controls autoplay>
+    <source src="gay-echo.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
 </html>
