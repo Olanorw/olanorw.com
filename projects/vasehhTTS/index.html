@@ -82,7 +82,7 @@
 
                 chatMessage = chatMessage.replace(/Cheer\d+/g, '').trim();
 
-                if (bitsUsed >= 1) {
+                if (bitsUsed >= 100) {
                     console.log(`Received ${bitsUsed} bits with message: ${chatMessage}`);
                     sendToElevenLabs(chatMessage);
                 }                
