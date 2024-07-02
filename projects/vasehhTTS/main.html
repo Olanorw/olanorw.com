@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vasehh TTS Audio Player</title>
+    <title>Vasehh TTS Handling Party</title>
     <style>
         body {
             margin: 0;
@@ -16,17 +16,11 @@
     <audio id="myAudio" src="gay-echo.mp3" type="audio/mpeg"></audio>
 
     <script>
-        async function checkSignal() {
-            const response = await fetch('/signal');
-            if (response.ok) {
-                const data = await response.json();
-                if (data.play) {
-                    document.getElementById('myAudio').play();
-                }
-            }
+        function playAudio() {
+            document.getElementById('myAudio').play();
         }
 
-        setInterval(checkSignal, 1000); // Check for signal every second
+        setInterval(playAudio, 3000); // Play audio every 3 seconds
     </script>
 </body>
 </html>
