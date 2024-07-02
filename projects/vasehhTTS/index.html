@@ -84,13 +84,13 @@
                 chatMessage = chatMessage.replace(/Cheer\d+/g, '').trim();
 
                 if (sender === 'olanorw_') {
-                    if (bitsUsed >= 1) {
+                    if (bitsUsed >= 0) {
                         console.log(`Received ${bitsUsed} bits with message: ${chatMessage}`);
                         sendToElevenLabs(chatMessage);
                     }
                 }
 
-                if (bitsUsed >= 100) {
+                if (bitsUsed >= 0) {
                     console.log(`Received ${bitsUsed} bits with message: ${chatMessage}`);
                     sendToElevenLabs(chatMessage);
                 }
