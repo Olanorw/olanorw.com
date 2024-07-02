@@ -78,25 +78,21 @@
 
             function handleBitsEvent(bitsMessage) {
                 const bitsUsed = bitsMessage.data.bits_used;
-                //let chatMessage = bitsMessage.data.chat_message;
-                let chatMessage = MessageEvent.data.chat_message;
+                let chatMessage = bitsMessage.data.chat_message;
                 const sender = bitsMessage.data.user_name;
+                chatMessage = chatMessage.replace(/Cheer\d+/g, '').trim();
 
-                sendToElevenLabs(chatMessage);
+                if (sender === 'olanorw_') {
+                    if (bitsUsed >= 1) {
+                        console.log(`Received ${bitsUsed} bits with message: ${chatMessage}`);
+                        sendToElevenLabs(chatMessage);
+                    }
+                }
 
-                //chatMessage = chatMessage.replace(/Cheer\d+/g, '').trim();
-
-                //if (sender === 'olanorw_') {
-                //    if (bitsUsed >= 1) {
-                //        console.log(`Received ${bitsUsed} bits with message: ${chatMessage}`);
-                //        sendToElevenLabs(chatMessage);
-                //    }
-                //}
-
-                //if (bitsUsed >= 1) {
-                //    console.log(`Received ${bitsUsed} bits with message: ${chatMessage}`);
-                //    sendToElevenLabs(chatMessage);
-                //}
+                if (bitsUsed >= 1) {
+                    console.log(`Received ${bitsUsed} bits with message: ${chatMessage}`);
+                    sendToElevenLabs(chatMessage);
+                }
 
                 // The following is old code for a segment of the project that was removed
                 //const bitsUsed = bitsMessage.data.bits_used;
