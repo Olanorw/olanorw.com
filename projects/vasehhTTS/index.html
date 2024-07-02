@@ -4,13 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Twitch Bits Listener</title>
+    <style>
+        #consoleOutput {
+            background-color: black;
+            color: white;
+            padding: 10px;
+            font-family: monospace;
+            height: 200px;
+            overflow-y: auto;
+        }
+    </style>
 </head>
 <body>
-    <h1>Listening for Bits Donations</h1>
+    
     <audio id="audioPlayer" controls></audio>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', (event) => {
+            const consoleOutput = document.getElementById('consoleOutput');
+
+            function logToMessagePage(message) {
+                const p = document.createElement('p');
+                p.textContent = message;
+                consoleOutput.appendChild(p);
+                consoleOutput.scrollTop = consoleOutput.scrollHeight;
+            }
+    
+
             const encryptedKeys = 'U2FsdGVkX1+IfWo59g5FiUoxZmEQStoNULl8H9CUTukPjRUIPEkHjPL/Cenxulg5qteD5OoyysjE0XUqWZUB6wNRuRaNMR7nYKYUY1iqyb1XMp8nYi44bW8wOj4M8irTxNDr0pPQVdcVPDvXNYlryM6dSN9y3maAB9lrttvZTr0+SgPWfuxaEU6P6l4nJ5GOGbr1Lndso9n+jPwfLmKoCik6ntYc2rbcx7bT4VZWWDOk26NE/Via9LHYw0HK5T+NgtlQcTNdhndMTRALkWtAAya6oqR7bSNEGTaszX5UZWJek8Z4OKvvp9176eUiUu38fXs6vr4d5v0q//QTFnfEqu6VMC1xStVupPnrXBS3c1U='; // Replace with your encrypted keys
             const secret = 'your-secret-passphrase';
 
@@ -58,12 +78,23 @@
 
             function handleBitsEvent(bitsMessage) {
                 const bitsUsed = bitsMessage.data.bits_used;
-                const chatMessage = bitsMessage.data.chat_message;
+                let chatMessage = bitsMessage.data.chat_message;
 
-                if (bitsUsed >= 100) {
+                chatMessage = chatMessage.replace(/Cheer\d+/g, '').trim();
+
+                if (bitsUsed >= 1) {
                     console.log(`Received ${bitsUsed} bits with message: ${chatMessage}`);
                     sendToElevenLabs(chatMessage);
-                }
+                }                
+
+                // The following is old code for a segment of the project that was removed
+                //const bitsUsed = bitsMessage.data.bits_used;
+                //const chatMessage = bitsMessage.data.chat_message;
+
+                //if (bitsUsed >= 100) {
+                //    console.log(`Received ${bitsUsed} bits with message: ${chatMessage}`);
+                //    sendToElevenLabs(chatMessage);
+                //}
             }
 
             function sendToElevenLabs(chatMessage) {
@@ -75,6 +106,7 @@
                     },
                     body: JSON.stringify({
                         text: chatMessage,
+                        model_id: 'eleven_turbo_v2',
                         voice_settings: {
                             stability: 0.5,
                             similarity_boost: 0.75
