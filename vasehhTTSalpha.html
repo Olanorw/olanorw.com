@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitch Bits Listener</title>
+</head>
+<body>
+    <h1>Listening for Bits Donations</h1>
+    <audio id="audioPlayer" controls></audio>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            // Replace with your actual tokens and keys
+            const twitchOAuthToken = 'tv5w1d7osoca97dk8nsx2y13e6chl8';
+            const twitchClientID = '4xa8gnw4bmikrcxc0r24vy2qduc0cv';
+            const twitchChannelID = '27391370'; // Replace with your channel ID
+            const elevenLabsAPIKey = 'sk_c37662c4250f30db5ac5b155427f5ec3d43b0f20b8acee8b';
+            const elevenLabsVoiceID = 'srUyX1KiPXUS7jvGq3HY'; // Replace with your desired voice ID from ElevenLabs
+
+            // Function to connect to Twitch PubSub
+            function connectTwitchPubSub() {
+                const ws = new WebSocket('wss://pubsub-edge.twitch.tv');
+
+                ws.onopen = () => {
+                    console.log('Connected to Twitch PubSub');
+                    const message = {
+                        type: 'LISTEN',
+                        nonce: 'unique_nonce',
+                        data: {
+                            topics: [`channel-bits-events-v2.${twitchChannelID}`],
+                            auth_token: twitchOAuthToken
+                        }
+                    };
+                    ws.send(JSON.stringify(message));
+                };
+
+                ws.onmessage = event => {
+                    const message = JSON.parse(event.data);
+                    if (message.type === 'MESSAGE') {
+                        const bitsMessage = JSON.parse(message.data.message);
+                        handleBitsEvent(bitsMessage);
+                    }
+                };
+
+                ws.onerror = error => {
+                    console.error('WebSocket error:', error);
+                };
+
+                ws.onclose = () => {
+                    console.log('Disconnected from Twitch PubSub');
+                    // Reconnect after a delay
+                    setTimeout(connectTwitchPubSub, 5000);
+                };
+            }
+
+            // Function to handle bits events
+            function handleBitsEvent(bitsMessage) {
+                const bitsUsed = bitsMessage.data.bits_used;
+                const chatMessage = bitsMessage.data.chat_message;
+
+                if (bitsUsed >= 100) {
+                    console.log(`Received ${bitsUsed} bits with message: ${chatMessage}`);
+                    sendToElevenLabs(chatMessage);
+                }
+            }
+
+            // Function to send message to ElevenLabs API
+            function sendToElevenLabs(chatMessage) {
+                const options = {
+                    method: 'POST',
+                    headers: {
+                        'xi-api-key': elevenLabsAPIKey, // Ideally, you should fetch this from a secure source
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        text: chatMessage,
+                        voice_settings: {
+                            stability: 0.5,
+                            similarity_boost: 0.75
+                        }
+                    })
+                };
+                fetch(`https://api.elevenlabs.io/v1/text-to-speech/${elevenLabsVoiceID}`, options)
+                    .then(response => response.arrayBuffer())
+                    .then(buffer => {
+                        const base64Audio = btoa(
+                            new Uint8Array(buffer)
+                                .reduce((data, byte) => data + String.fromCharCode(byte), '')
+                        );
+                        const audioPlayer = document.getElementById('audioPlayer');
+                        audioPlayer.src = `data:audio/mp3;base64,${base64Audio}`;
+                        audioPlayer.play();
+                    })
+                    .catch(err => console.error(err));
+            }
+
+            // Start the connection
+            connectTwitchPubSub();
+        });
+    </script>
+</body>
+</html>
