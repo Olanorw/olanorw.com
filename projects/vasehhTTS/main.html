@@ -19,6 +19,7 @@
     <audio id="myAudio" src="gay-echo.mp3" type="audio/mpeg"></audio>
 
     <script>
+        document.getElementById('myAudio').volume = 0.5; // Set volume to 10%
         function playAudio() {
             var audio = document.getElementById('myAudio');
             audio.play().then(() => {
