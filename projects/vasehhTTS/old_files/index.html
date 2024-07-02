@@ -8,20 +8,16 @@
 <body>
     <h1>Listening for Bits Donations</h1>
     <audio id="audioPlayer" controls></audio>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', (event) => {
-            const encryptedKeys = 'U2FsdGVkX1+IfWo59g5FiUoxZmEQStoNULl8H9CUTukPjRUIPEkHjPL/Cenxulg5qteD5OoyysjE0XUqWZUB6wNRuRaNMR7nYKYUY1iqyb1XMp8nYi44bW8wOj4M8irTxNDr0pPQVdcVPDvXNYlryM6dSN9y3maAB9lrttvZTr0+SgPWfuxaEU6P6l4nJ5GOGbr1Lndso9n+jPwfLmKoCik6ntYc2rbcx7bT4VZWWDOk26NE/Via9LHYw0HK5T+NgtlQcTNdhndMTRALkWtAAya6oqR7bSNEGTaszX5UZWJek8Z4OKvvp9176eUiUu38fXs6vr4d5v0q//QTFnfEqu6VMC1xStVupPnrXBS3c1U='; // Replace with your encrypted keys
-            const secret = 'your-secret-passphrase';
+            // Replace with your actual tokens and keys
+            const twitchOAuthToken = 'tv5w1d7osoca97dk8nsx2y13e6chl8';
+            const twitchClientID = '4xa8gnw4bmikrcxc0r24vy2qduc0cv';
+            const twitchChannelID = '27391370'; // Replace with your channel ID
+            const elevenLabsAPIKey = 'sk_c37662c4250f30db5ac5b155427f5ec3d43b0f20b8acee8b';
+            const elevenLabsVoiceID = 'srUyX1KiPXUS7jvGq3HY'; // Replace with your desired voice ID from ElevenLabs
 
-            const decryptedKeys = JSON.parse(CryptoJS.AES.decrypt(encryptedKeys, secret).toString(CryptoJS.enc.Utf8));
-
-            const twitchOAuthToken = decryptedKeys.twitchOAuthToken;
-            const twitchClientID = decryptedKeys.twitchClientID;
-            const twitchChannelID = decryptedKeys.twitchChannelID;
-            const elevenLabsAPIKey = decryptedKeys.elevenLabsAPIKey;
-            const elevenLabsVoiceID = decryptedKeys.elevenLabsVoiceID;
-
+            // Function to connect to Twitch PubSub
             function connectTwitchPubSub() {
                 const ws = new WebSocket('wss://pubsub-edge.twitch.tv');
 
@@ -52,10 +48,12 @@
 
                 ws.onclose = () => {
                     console.log('Disconnected from Twitch PubSub');
+                    // Reconnect after a delay
                     setTimeout(connectTwitchPubSub, 5000);
                 };
             }
 
+            // Function to handle bits events
             function handleBitsEvent(bitsMessage) {
                 const bitsUsed = bitsMessage.data.bits_used;
                 const chatMessage = bitsMessage.data.chat_message;
@@ -66,11 +64,12 @@
                 }
             }
 
+            // Function to send message to ElevenLabs API
             function sendToElevenLabs(chatMessage) {
                 const options = {
                     method: 'POST',
                     headers: {
-                        'xi-api-key': elevenLabsAPIKey,
+                        'xi-api-key': elevenLabsAPIKey, // Ideally, you should fetch this from a secure source
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
@@ -95,6 +94,7 @@
                     .catch(err => console.error(err));
             }
 
+            // Start the connection
             connectTwitchPubSub();
         });
     </script>
