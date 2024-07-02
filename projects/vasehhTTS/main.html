@@ -17,7 +17,12 @@
 
     <script>
         function playAudio() {
-            document.getElementById('myAudio').play();
+            var audio = document.getElementById('myAudio');
+            audio.play().then(() => {
+                console.log('Audio is playing');
+            }).catch(error => {
+                console.error('Error playing audio:', error);
+            });
         }
 
         setInterval(playAudio, 3000); // Play audio every 3 seconds
