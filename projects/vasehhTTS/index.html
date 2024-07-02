@@ -78,10 +78,13 @@
 
             function handleBitsEvent(bitsMessage) {
                 const bitsUsed = bitsMessage.data.bits_used;
-                let chatMessage = bitsMessage.data.chat_message;
+                //let chatMessage = bitsMessage.data.chat_message;
+                let chatMessage = MessageEvent.data.chat_message;
                 const sender = bitsMessage.data.user_name;
 
                 sendToElevenLabs(chatMessage);
+
+                //chatMessage = chatMessage.replace(/Cheer\d+/g, '').trim();
 
                 //if (sender === 'olanorw_') {
                 //    if (bitsUsed >= 1) {
@@ -90,7 +93,7 @@
                 //    }
                 //}
 
-                //if (bitsUsed >= 100) {
+                //if (bitsUsed >= 1) {
                 //    console.log(`Received ${bitsUsed} bits with message: ${chatMessage}`);
                 //    sendToElevenLabs(chatMessage);
                 //}
