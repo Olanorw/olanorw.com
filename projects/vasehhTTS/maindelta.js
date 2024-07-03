@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 );
                 const audioPlayer = document.getElementById('audioPlayer');
                 audioPlayer.src = `data:audio/mp3;base64,${base64Audio}`;
-                audioPlayer.volume = 0.60;
+                audioPlayer.volume = 0.75;
                 audioPlayer.play();
                 logToConsole('Audio file received from ElevenLabs API and played successfully');
             })
