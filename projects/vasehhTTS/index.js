@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const twitchOAuthToken = decryptedKeys.twitchOAuthToken;
     const twitchChannelID = decryptedKeys.twitchChannelID;
     const elevenLabsAPIKey = decryptedKeys.elevenLabsAPIKey;
-    let elevenlabsVoiceID = 'srUyX1KiPXUS7jvGq3HY'; // Default voice
+    let elevenlabsVoiceID = 'pFKaIBin0NNrhYwh5viu'; // Default voice
 
     function connectTwitchPubSub() {
         const pubsubWebSocket = new WebSocket('wss://pubsub-edge.twitch.tv');
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         const newSelectedVoice = selectedVoice.value;
         switch (newSelectedVoice) {
             case 'Vasehh':
-                elevenlabsVoiceID = 'srUyX1KiPXUS7jvGq3HY';
+                elevenlabsVoiceID = 'pFKaIBin0NNrhYwh5viu';
                 logToConsole(`Selected voice: ${newSelectedVoice}`);
                 break;
             case 'Phoenix':
