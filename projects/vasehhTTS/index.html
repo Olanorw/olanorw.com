@@ -1,24 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="index.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vasehh TTS (by Olanorw & Jrones)</title>
-    <style>
-        #consoleOutput {
-            background-color: black;
-            color: white;
-            padding: 10px;
-            font-family: monospace;
-            height: 200px;
-            overflow-y: auto;
-        }
-    </style>
 </head>
 <body>
-    
-    <audio id="audioPlayer" controls></audio>
+    <h1>Vasehh TTS (by Olanorw & Jrones)</h1>
+
+    <input type="text" id="inputText" placeholder="Enter text here...">
+
+    <button id="convertButton">Convert</button>
+
+    <div>
+        <label for="ignoreVasehhBits">Ignore Vasehh Bits</label>
+        <input class="checkbox" type="checkbox" id="ignoreVasehhBits">
+        <select id="voiceSelector">
+            <option value="Vasehh">Vasehh</option>
+            <option value="Phoenix">Phoenix</option>
+            <option value="Pratul">Pratul</option>
+        </select>
+    </div>
+
     <div id="consoleOutput"></div>
+
+    <audio id="audioPlayer" controls style="padding: 10px;"></audio>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
     <script src="index.js"></script>
 </body>

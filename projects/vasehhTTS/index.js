@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const twitchClientID = decryptedKeys.twitchClientID;
     const twitchChannelID = decryptedKeys.twitchChannelID;
     const elevenLabsAPIKey = decryptedKeys.elevenLabsAPIKey;
-    const elevenLabsVoiceID = 'srUyX1KiPXUS7jvGq3HY'
+    //const elevenlabsVoiceID = 'srUyX1KiPXUS7jvGq3HY'; // Default voice
 
     function connectTwitchPubSub() {
         const ws = new WebSocket('wss://pubsub-edge.twitch.tv');
@@ -55,54 +55,96 @@ document.addEventListener('DOMContentLoaded', (event) => {
             setTimeout(connectTwitchPubSub, 5000);
         };
     }
+    
+    let elevenlabsVoiceID = 'srUyX1KiPXUS7jvGq3HY'; // Default voice
+    const selectedVoice = document.getElementById('voiceSelector');
+    selectedVoice.addEventListener('change', handleVoiceChange);
+
+    function handleVoiceChange() {
+        const newSelectedVoice = selectedVoice.value;
+        switch (newSelectedVoice) {
+            case 'Vasehh':
+                elevenlabsVoiceID = 'srUyX1KiPXUS7jvGq3HY';
+                logToConsole(`Selected voice: ${newSelectedVoice}`);
+                break;
+            case 'Phoenix':
+                elevenlabsVoiceID = 'uIOPHXRRaPBHQzb3tDcx';
+                logToConsole(`Selected voice: ${newSelectedVoice}`);
+                break;
+            case 'Pratul':
+                elevenlabsVoiceID = 'y6Ao4Y93UrnTbmzdVlFc';
+                logToConsole(`Selected voice ID: ${newSelectedVoice}`);
+                break;
+            default:
+                logToConsole(`Unknown voice selected: ${newSelectedVoice}`);
+                break;
+        }
+    }
+
+    const ignoreVasehhBits = document.getElementById('ignoreVasehhBits');
+    ignoreVasehhBits.addEventListener('click', handleIgnoreVasehhBits);
+
+    function handleIgnoreVasehhBits() {
+        if (ignoreVasehhBits.checked) {
+            logToConsole('Ignoring Vasehh bits');
+        }
+        else {
+            logToConsole('Not ignoring Vasehh bits');
+        }
+    }
+
+    const button = document.getElementById('convertButton');
+    button.addEventListener('click', handleButtonPress);
+    
+    function handleButtonPress() {
+        const chatMessage = document.getElementById('inputText').value;
+        sendToElevenLabs(chatMessage);
+    }
 
     function handleBitsEvent(bitsMessage) {
-        const bitsUsed = bitsMessage.data.bits_used;
-        let chatMessage = bitsMessage.data.chat_message;
-        const sender = bitsMessage.data.user_name;
-        chatMessage = chatMessage.replace(/Cheer\d+/g, '').trim();
+        if (ignoreVasehhBits.checked === false) {
+            const bitsUsed = bitsMessage.data.bits_used;
+            let chatMessage = bitsMessage.data.chat_message;
+            const sender = bitsMessage.data.user_name;
+            chatMessage = chatMessage.replace(/Cheer\d+/g, '').trim();
 
-        logToConsole(`Received ${bitsUsed} bits with message: ${chatMessage}`);
+            logToConsole(`Received ${bitsUsed} bits with message: ${chatMessage}`);
 
-        if (sender === 'olanorw_') {
-            if (bitsUsed >= 1) {
-                
+            if (sender === 'olanorw_') {
+                if (bitsUsed >= 1) {
+
+                    if (chatMessage.includes('nigger')) {
+                        // Skip the message
+                        console.log("Skipping message");
+                    }
+                    if (chatMessage.includes('nigga')) {
+                        // Skip the message
+                        console.log("Skipping message");
+                    }
+                    else {
+                    sendToElevenLabs(chatMessage);
+                    }
+                }
+            }
+
+            if (bitsUsed >= 100) {
                 if (chatMessage.includes('nigger')) {
                     // Skip the message
-                    console.log("Skipping message");
+                    logToConsole("Skipping message");
                 }
                 if (chatMessage.includes('nigga')) {
                     // Skip the message
-                    console.log("Skipping message");
+                    logToConsole("Skipping message");
                 }
                 else {
-                sendToElevenLabs(chatMessage);
+                    sendToElevenLabs(chatMessage);
                 }
             }
         }
-
-        if (bitsUsed >= 100) {
-            if (chatMessage.includes('nigger')) {
-                // Skip the message
-                console.log("Skipping message");
-            }
-            if (chatMessage.includes('nigga')) {
-                // Skip the message
-                console.log("Skipping message");
-            }
-            else {
-                sendToElevenLabs(chatMessage);
-            }
+        
+        else {
+            logToConsole("Bits donated to Vasehh, ignoring...")
         }
-
-        // The following is old code for a segment of the project that was removed
-        //const bitsUsed = bitsMessage.data.bits_used;
-        //const chatMessage = bitsMessage.data.chat_message;
-
-        //if (bitsUsed >= 100) {
-        //    console.log(`Received ${bitsUsed} bits with message: ${chatMessage}`);
-        //    sendToElevenLabs(chatMessage);
-        //}
     }
 
     function sendToElevenLabs(chatMessage) {
@@ -123,7 +165,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             })
         };
         logToConsole('Attempting to send message to the ElevenLabs API...')
-        fetch(`https://api.elevenlabs.io/v1/text-to-speech/${elevenLabsVoiceID}`, options)
+        fetch(`https://api.elevenlabs.io/v1/text-to-speech/${elevenlabsVoiceID}`, options)
             .then(response => response.arrayBuffer())
             .then(buffer => {
                 const base64Audio = btoa(
