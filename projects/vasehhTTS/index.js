@@ -16,15 +16,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const decryptedKeys = JSON.parse(CryptoJS.AES.decrypt(encryptedKeys, secret).toString(CryptoJS.enc.Utf8));
 
     const twitchOAuthToken = decryptedKeys.twitchOAuthToken;
-    const twitchClientID = decryptedKeys.twitchClientID;
     const twitchChannelID = decryptedKeys.twitchChannelID;
     const elevenLabsAPIKey = decryptedKeys.elevenLabsAPIKey;
-    //const elevenlabsVoiceID = 'srUyX1KiPXUS7jvGq3HY'; // Default voice
+    let elevenlabsVoiceID = 'srUyX1KiPXUS7jvGq3HY'; // Default voice
 
     function connectTwitchPubSub() {
-        const ws = new WebSocket('wss://pubsub-edge.twitch.tv');
+        const pubsubWebSocket = new WebSocket('wss://pubsub-edge.twitch.tv');
 
-        ws.onopen = () => {
+        pubsubWebSocket.onopen = () => {
             logToConsole('Attempting to connect to Twitch PubSub...')
             const message = {
                 type: 'LISTEN',
@@ -34,11 +33,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
                     auth_token: twitchOAuthToken
                 }
             };
-            ws.send(JSON.stringify(message));
+            pubsubWebSocket.send(JSON.stringify(message));
             logToConsole('Connected to Twitch PubSub');
         };
 
-        ws.onmessage = event => {
+        pubsubWebSocket.onmessage = event => {
             const message = JSON.parse(event.data);
             if (message.type === 'MESSAGE') {
                 const bitsMessage = JSON.parse(message.data.message);
@@ -46,17 +45,16 @@ document.addEventListener('DOMContentLoaded', (event) => {
             }
         };
 
-        ws.onerror = error => {
+        pubsubWebSocket.onerror = error => {
             console.error('WebSocket error:', error);
         };
 
-        ws.onclose = () => {
+        pubsubWebSocket.onclose = () => {
             console.log('Disconnected from Twitch PubSub');
             setTimeout(connectTwitchPubSub, 5000);
         };
     }
     
-    let elevenlabsVoiceID = 'srUyX1KiPXUS7jvGq3HY'; // Default voice
     const selectedVoice = document.getElementById('voiceSelector');
     selectedVoice.addEventListener('change', handleVoiceChange);
 
@@ -104,44 +102,37 @@ document.addEventListener('DOMContentLoaded', (event) => {
     function handleBitsEvent(bitsMessage) {
         if (ignoreVasehhBits.checked === false) {
             const bitsUsed = bitsMessage.data.bits_used;
-            let chatMessage = bitsMessage.data.chat_message;
             const sender = bitsMessage.data.user_name;
+            let chatMessage = bitsMessage.data.chat_message;
             chatMessage = chatMessage.replace(/Cheer\d+/g, '').trim();
 
             logToConsole(`Received ${bitsUsed} bits with message: ${chatMessage}`);
 
+            // Create some filtered words
+            const filteredWords = ['nigger', 'nigga', 'nonce', 'kids', 'minors', 'pedo', 'pedophile', 'children', 'retarded', 'nicker', 'kys', 'coons', 'coon', 'negro', 'fags', 'faggots', 'faggot', 'fag', 'niggas', 'niqqa', 'nibba', 'rape', 'filteredwordstester']
+            const filteredWordsRegex = new RegExp(filteredWords.join('|'), 'i');
+
             if (sender === 'olanorw_') {
                 if (bitsUsed >= 1) {
-
-                    if (chatMessage.includes('nigger')) {
-                        // Skip the message
-                        console.log("Skipping message");
-                    }
-                    if (chatMessage.includes('nigga')) {
-                        // Skip the message
-                        console.log("Skipping message");
+                    if (filteredWordsRegex.test(chatMessage)) {
+                        logToConsole('Word is filtered, skipping...')
                     }
                     else {
                     sendToElevenLabs(chatMessage);
                     }
                 }
             }
-
-            if (bitsUsed >= 100) {
-                if (chatMessage.includes('nigger')) {
-                    // Skip the message
-                    logToConsole("Skipping message");
-                }
-                if (chatMessage.includes('nigga')) {
-                    // Skip the message
-                    logToConsole("Skipping message");
-                }
-                else {
-                    sendToElevenLabs(chatMessage);
+            else {
+                if (bitsUsed >= 100) {
+                    if (filteredWordsRegex.test(chatMessage)) {
+                        logToConsole('Word is filtered, skipping...')
+                    }
+                    else {
+                        sendToElevenLabs(chatMessage);
+                    }
                 }
             }
         }
-        
         else {
             logToConsole("Bits donated to Vasehh, ignoring...")
         }
