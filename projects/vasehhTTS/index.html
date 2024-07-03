@@ -85,13 +85,33 @@
                 if (sender === 'olanorw_') {
                     if (bitsUsed >= 1) {
                         console.log(`Received ${bitsUsed} bits with message: ${chatMessage}`);
+                        if (chatMessage.includes('nigger')) {
+                            // Skip the message
+                            console.log("Skipping message");
+                        }
+                        if (chatMessage.includes('nigga')) {
+                            // Skip the message
+                            console.log("Skipping message");
+                        }
+                        else {
                         sendToElevenLabs(chatMessage);
+                        }
                     }
                 }
 
                 if (bitsUsed >= 1) {
                     console.log(`Received ${bitsUsed} bits with message: ${chatMessage}`);
-                    sendToElevenLabs(chatMessage);
+                    if (chatMessage.includes('nigger')) {
+                            // Skip the message
+                            console.log("Skipping message");
+                        }
+                    if (chatMessage.includes('nigga')) {
+                        // Skip the message
+                        console.log("Skipping message");
+                    }
+                    else {
+                        sendToElevenLabs(chatMessage);
+                    }
                 }
 
                 // The following is old code for a segment of the project that was removed
