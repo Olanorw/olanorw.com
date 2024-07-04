@@ -91,10 +91,19 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
     }
 
-    const button = document.getElementById('convertButton');
-    button.addEventListener('click', handleButtonPress);
+    const convertButton = document.getElementById('convertButton');
+    convertButton.addEventListener('click', handleButtonPress);
     
     function handleButtonPress() {
+        convertButton.disabled = true;
+        convertButton.style.cursor = 'not-allowed';
+        convertButton.style.opacity = '0.5';
+
+        setTimeout(() => {
+            convertButton.disabled = false;
+            convertButton.style.cursor = 'pointer';
+            convertButton.style.opacity = '1';
+        }, 3000);
         const chatMessage = document.getElementById('inputText').value;
         sendToElevenLabs(chatMessage);
     }
