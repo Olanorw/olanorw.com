@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 }
             }
             else {
-                if (bitsUsed >= 100) {
+                if (bitsUsed >= 1) {
                     if (filteredWordsRegex.test(chatMessage)) {
                         logToConsole('Word is filtered, skipping...')
                     }
