@@ -223,7 +223,7 @@ hr.dark {
   justify-content: center;
   align-items: center;
   color: #fff;
-  background: url("https://olanorw.com/assets/png/Olanorw%20Plain%20Art%20Sqaure.png"); /* Replace this with your image URL */
+  background: url('./assets/png/4934-Matcha/Plain\ Art\ Square.png'); /* Replace this with your image URL */
   background-position: center;
   background-size: cover;
 
@@ -414,7 +414,7 @@ hr.dark {
           font-size: 1.7rem; } }
 
 .contact {
-  background: url("https://olanorw.com/assets/png/Olanorw%20Plain%20Art%20Sqaure.png");
+  background: url('./assets/png/4934-Matcha/Plain\ Art\ Square.png');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center; }
