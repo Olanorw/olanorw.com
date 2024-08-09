@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             const filteredWordsRegex = new RegExp(filteredWords.join('|'), 'i');
 
             if (sender === 'olanorw_') {
-                if (bitsUsed >= 1) {
+                if (bitsUsed >= 100) {
                     if (filteredWordsRegex.test(chatMessage)) {
                         logToConsole('Word is filtered, skipping...')
                     }
@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 }
             }
             else {
-                if (bitsUsed >= 25) {
+                if (bitsUsed >= 100) {
                     if (filteredWordsRegex.test(chatMessage)) {
                         logToConsole('Word is filtered, skipping...')
                     }
