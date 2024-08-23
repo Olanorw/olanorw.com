@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     const texts = [
-        "Hi, I'm Olanorw.",
+        "Hi, I'm Olavorw.",
         "AKA Olav.",
         "I'm a software developer.",
         "Welcome to my website.",
